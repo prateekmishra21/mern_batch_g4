@@ -1,7 +1,7 @@
 var names = [1, 2];
 names.push(24);
 
-console.log(names);
+// console.log(names);
 var emails = [424, 4545, 464];
 
 // names = names.concat(emails);
@@ -23,4 +23,8 @@ var data = [
   { name: "S5", Key: 154 },
 ];
 
-// Hello Rahul
+var arr = [53, 545, 46, 6, 646, 4, 64, 64];
+
+arr.map((value, index) => {
+  console.log(value, index);
+});

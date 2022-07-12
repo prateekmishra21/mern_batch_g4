@@ -24,7 +24,7 @@ Obj = {
 //   Domain: "Eng.",
 // };
 
-console.log(Obj);
+// console.log(Obj);
 
 // Obj.Course = "MERN";
 
@@ -47,3 +47,34 @@ var Details = { Name: "React", Add: "Delhi", Email: "@" };
 
 // var Name = Details.Name;
 // var { Name, Mobile } = Details;
+
+// Obj = { Name: "Aman" };
+// Obj = { ...Obj, Email: "", Address: {} };
+// Obj = { Name: "Aman", Email: "", Address: {} };
+// Obj = { ...Obj, Address: { ...Obj.Address, Pin: 344 }, Email: "dbkkj@klndl" };
+
+Obj = {
+  Name: "Aman",
+  Email: "dbkkj@klndl",
+  Address: {
+    Name: "Aman",
+    Email: "dbkkj@klndl",
+    Address: {
+      Pin: 344,
+      Details: {},
+    },
+    Test: ":Test",
+  },
+};
+
+Obj = { name: "React", Mobile: 2233 };
+var { Mobile } = Obj;
+
+console.log(Mobile);
+
+Obj.Mobile = 445;
+var { Mobile } = Obj;
+console.log(Mobile);
+
+// console.log(Object.keys(Obj));
+console.log(Object.values(Obj));
