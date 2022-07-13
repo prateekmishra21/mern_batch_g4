@@ -24,7 +24,12 @@ var data = [
 ];
 
 var arr = [53, 545, 46, 6, 646, 4, 64, 64];
+arr = [{ name: "", age: 34, email: "jksdd" }];
+// arr.map((value, index) => {
+//   console.log(value, " --- ", index);
+// });
 
-arr.map((value, index) => {
-  console.log(value, index);
-});
+var filteredData = arr.filter((value, index) => value % 45565 === 0);
+// var filteredData = arr.find((value, index) => value % 2 === 0);
+
+console.log(filteredData);

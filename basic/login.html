@@ -1,0 +1,80 @@
+<html>
+  <head>
+    <style>
+      .input-form {
+        width: 300px;
+        height: 40px;
+        border: 1px solid gray;
+        border-radius: 20px;
+        padding-left: 20px;
+      }
+
+      .login-btn {
+        background-color: black;
+        color: white;
+        font-size: 30px;
+        font-weight: 900;
+        border-radius: 10px;
+        padding: 5px 20px;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <center>
+      <div>
+        <p>Login Your Account</p>
+        <br />
+        <form onsubmit="Validate(); return false">
+          <input
+            id="user"
+            class="input-form"
+            type="text"
+            placeholder="Username"
+          />
+          <br />
+          <br />
+          <input
+            id="pass"
+            class="input-form"
+            type="password"
+            placeholder="Password"
+          />
+          <br />
+          <br />
+          <button type="submit" class="login-btn">Login</button>
+        </form>
+      </div>
+
+      <br />
+      <p>Copyright @ <span id="date"></span></p>
+    </center>
+    <script>
+      var data = {
+        userName: "node",
+        password: "123",
+      };
+
+      var date = new Date();
+      let year = date.getFullYear();
+
+      let dateElement = document.getElementById("date");
+      dateElement.innerHTML = `<span style = "color:red;">${year}</span>`;
+
+      const Validate = () => {
+        var passElement = document.getElementById("pass");
+        var userElement = document.getElementById("user");
+        if (
+          userElement.value === data.userName &&
+          passElement.value === data.password
+        ) {
+          //   console.log("Welcome to home page");
+          window.location.href = "https://google.com";
+        } else {
+          //   console.log("Wrong");
+          window.location.href = "https://fb.com";
+        }
+      };
+    </script>
+  </body>
+</html>
