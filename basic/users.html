@@ -1,0 +1,25 @@
+<html>
+  <head></head>
+  <body>
+    <button style="width: 200px; height: 60px" onclick="getPosts();">
+      Get Users
+    </button>
+    <script>
+      const getPosts = () => {
+        let url = "https://jsonplaceholder.typicode.com/users";
+        console.log("Data Fetch..");
+        fetch(url)
+          .then((res) => {
+            return res.json();
+          })
+          .then((finalResult) => {
+            finalResult.map((user, index, arr) => {
+              console.log(user);
+            });
+          });
+
+        console.log("Data Received..");
+      };
+    </script>
+  </body>
+</html>
