@@ -1,0 +1,32 @@
+Q1: 
+    Api URL = https://jsonplaceholder.typicode.com/todos
+    fetch all the todo's from this url and print only completed todos on webpage.
+
+Q2: 
+    Api URL = https://reqres.in/api/users
+    You will get users list, 
+    You have to create one web page, where you will print all the users name with their images.
+
+Q3: 
+    Api URL = https://jsonplaceholder.typicode.com/albums
+    Here You will get list of albums.
+    You have to filter all the albums, where userId is !== 3 and !== 5.
+    You have to print these name on Web page.
+
+
+
+Hint: For printing the details on html element from JS, You can use innerHTML = .
+
+
+
+How to choose your question ?
+You have to devide last digit of your roll number by 3 and based on the reminder you have to choose your question.
+Ex. 
+  Rollnumber = 2234
+  --> 4 % 3 = 1
+  So you will choose Q2.
+  
+  
+  0 for Q1
+  1 for Q2
+  2 for Q3
