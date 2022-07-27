@@ -12,3 +12,9 @@ Keys.map((val, index) => {
     Str += " and ";
   }
 });
+
+var arr = Keys.map((val) => {
+  return `Your ${val} is ${obj[val]}`;
+});
+arr = arr.join(" and ");
+console.log(arr);
