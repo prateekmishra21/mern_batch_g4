@@ -2,17 +2,15 @@
 //
 //
 
-import Counts from "./components/count";
-import Greet from "./components/greet";
-import CountClass from "./components/countClass";
-import Home, { Home2 } from "./components/greetClass";
+import Gret from "./components/greetClass";
+import Prateek from "./components/number";
 const App = () => {
+  let numbers = [43, 5454, 645, 65, 656, 76, 76];
   return (
     <div>
       <p>Hi! Login Your Account</p>
-      <Home name="React" />
-      <Home2 name="React" />
-      <CountClass />
+      <Gret tech="MERN" />
+      {/* <Prateek num="1" data={numbers} /> */}
     </div>
   );
 };

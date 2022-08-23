@@ -1,29 +1,30 @@
-import React, { Component } from "react";
-class Home extends React.Component {
+import React from "react";
+
+class GreetClass extends React.Component {
   constructor(props) {
     super();
-    this.name = "React and Node";
+    this.state = { count: 0, click: 1 };
   }
 
+  onIncrement = () => {
+    for (var i = 0; i < 5; i++) {
+      // this.setState({ click: this.state.click + i });
+      this.setState((prevState) => {
+        return { click: prevState.click + 1 };
+      });
+    }
+  };
+
   render() {
+    console.log("Rendering");
     return (
       <div>
-        <p>
-          This is my Home {this.name} - {this.props.name}{" "}
-        </p>
+        {/* <p>I am render - {this.props.tech}</p> */}
+        <p>You Clicked me {this.state.click} Times</p>
+        <button onClick={this.onIncrement}>Click</button>
       </div>
     );
   }
 }
 
-class Home2 extends React.Component {
-  render() {
-    return (
-      <div>
-        <p>This is my Home Two</p>
-      </div>
-    );
-  }
-}
-export default Home;
-export { Home2 };
+export default GreetClass;

@@ -1,5 +1,3 @@
-import Home from "./greetClass";
-
 const Greet = (props) => {
   var na = "njksn";
   return (
