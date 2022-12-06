@@ -1,0 +1,26 @@
+<html>
+  <head> </head>
+  <body>
+    <p>This is GET api testing</p>
+    <input type="number" id="students_id" />
+    <button onclick="getStudentsData();">GET DATA</button>
+
+    <script>
+      const getStudentsData = () => {
+        var id = document.getElementById("students_id").value;
+        var queryString = "?";
+        if (id) {
+          queryString += `id=${id}`;
+        }
+        var apiUrl = `http://localhost:4000/students${queryString}`;
+        fetch(apiUrl)
+          .then((data) => {
+            return data.json();
+          })
+          .then((students) => {
+            console.log(students);
+          });
+      };
+    </script>
+  </body>
+</html>
