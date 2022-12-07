@@ -1,4 +1,3 @@
-const { response } = require("express");
 const { Student } = require("../models/models");
 
 var students = ["S1", "S2", "S3", "S4", "New Student"];
@@ -38,8 +37,38 @@ const getStudents = async (request, response) => {
 };
 
 const createNewStudent = async (request, response) => {
-  await Student.create(request.body);
+  await Student.create();
   return response.json({ data: "Student Created" });
 };
 
-module.exports = { createNewStudent, getStudents };
+const updateStudent = async (request, response) => {
+  var studentId = request.query.id;
+  try {
+    var student = await Student.findById(studentId);
+    if (!student) {
+      return response
+        .status(404)
+        .json({ status: "Error", msg: "Id does not exist" });
+    }
+  } catch {
+    return response
+      .status(404)
+      .json({ status: "Error", msg: "Id does not exist" });
+  }
+
+  await Student.findByIdAndUpdate(studentId, request.body);
+  return response.json({ data: "Student Updated" });
+};
+
+const deleteStudent = async (request, response) => {
+  var studentId = request.query.id;
+  await Student.findByIdAndDelete(studentId);
+  return response.json({ data: "Student Deleted" });
+};
+
+module.exports = {
+  createNewStudent,
+  getStudents,
+  updateStudent,
+  deleteStudent,
+};

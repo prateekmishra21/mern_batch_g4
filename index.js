@@ -11,7 +11,12 @@ mongoose.connection.on("connected", () => {
 
 // Data Connection End
 
-const { getStudents, createNewStudent } = require("./src/controllers/index");
+const {
+  getStudents,
+  createNewStudent,
+  updateStudent,
+  deleteStudent,
+} = require("./src/controllers/index");
 const app = server();
 
 app.use(cors());
@@ -19,6 +24,8 @@ app.use(bodyParser.json());
 
 app.get("/students", getStudents);
 app.post("/create-new-student", createNewStudent);
+app.put("/update-student", updateStudent);
+app.delete("/delete-student", deleteStudent);
 
 app.listen(4000, () => {
   console.log("Sever Started on port 4000");
