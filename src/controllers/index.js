@@ -34,7 +34,7 @@ const getStudents = async (request, response) => {
   } else if (name) {
     var allStudents = await Student.findOne({ name: name });
   } else {
-    var allStudents = await Student.find().select("name email");
+    var allStudents = await Student.find();
   }
 
   // var allStudents = await Student.find({ age: { $gt: 2, $lt: 10 } });
@@ -91,7 +91,11 @@ const Login = async (req, res) => {
     return res.json({ status: "You entered wrong Password" });
   }
 
+  user.updatedAt = new Date();
+  var user = await user.save();
+
   user.enc_password = undefined;
+
   return res.json({ status: "LoggedIn", user });
 };
 
