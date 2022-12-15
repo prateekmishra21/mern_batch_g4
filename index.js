@@ -16,6 +16,7 @@ const {
   createNewStudent,
   updateStudent,
   deleteStudent,
+  Login,
 } = require("./src/controllers/index");
 const app = server();
 
@@ -24,6 +25,7 @@ app.use(bodyParser.json());
 
 app.get("/students", getStudents);
 app.post("/create-new-student", createNewStudent);
+app.post("/login", Login);
 app.put("/update-student", updateStudent);
 app.delete("/delete-student", deleteStudent);
 

@@ -22,23 +22,37 @@ const getStudentsOld = (request, response) => {
 };
 
 const getStudents = async (request, response) => {
-  var studentId = request.query.id;
-  if (studentId) {
+  var { id, name, email } = request.query;
+
+  if (id) {
     try {
-      var allStudents = await Student.findById(studentId);
+      var allStudents = await Student.findById(id);
+      console.log(allStudents.isUserExist(89578973));
     } catch {
       allStudents = null;
     }
+  } else if (name) {
+    var allStudents = await Student.findOne({ name: name });
   } else {
-    var allStudents = await Student.find();
+    var allStudents = await Student.find().select("name email");
   }
+
+  // var allStudents = await Student.find({ age: { $gt: 2, $lt: 10 } });
+  // // var allStudents = await Student.find({
+  // //   $and: [{ name: "Node", age: { $lt: 4 } }, { email: "vnkdsnk" }],
+  // // });
+
+  // var allStudents = await Student.find({
+  //   name: { $regex: "Node", $options: "i" },
+  // });
 
   return response.json(allStudents);
 };
 
 const createNewStudent = async (request, response) => {
-  await Student.create();
-  return response.json({ data: "Student Created" });
+  // var newStudent = await Student.create(request.body);
+  var newStudent = await Student.create(request.body);
+  return response.json({ status: "Student Created", data: newStudent });
 };
 
 const updateStudent = async (request, response) => {
@@ -62,8 +76,23 @@ const updateStudent = async (request, response) => {
 
 const deleteStudent = async (request, response) => {
   var studentId = request.query.id;
-  await Student.findByIdAndDelete(studentId);
-  return response.json({ data: "Student Deleted" });
+  var deleteObj = await Student.findByIdAndDelete(studentId);
+  return response.json({ data: "Student Deleted", data: deleteObj });
+};
+
+const Login = async (req, res) => {
+  const { username, password } = req.body;
+  var user = await Student.findOne({ username: username });
+  if (!user) {
+    return res.json({ status: "You entered wrong Username" });
+  }
+
+  if (!user.authenticate(password)) {
+    return res.json({ status: "You entered wrong Password" });
+  }
+
+  user.enc_password = undefined;
+  return res.json({ status: "LoggedIn", user });
 };
 
 module.exports = {
@@ -71,4 +100,5 @@ module.exports = {
   getStudents,
   updateStudent,
   deleteStudent,
+  Login,
 };
