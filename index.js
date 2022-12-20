@@ -18,10 +18,13 @@ const {
   deleteStudent,
   Login,
 } = require("./src/controllers/index");
+const { authRouter } = require("./src/router/users");
 const app = server();
 
 app.use(cors());
 app.use(bodyParser.json());
+
+app.use("/auth", authRouter);
 
 app.get("/students", getStudents);
 app.post("/create-new-student", createNewStudent);

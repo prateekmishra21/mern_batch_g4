@@ -37,14 +37,14 @@ const getStudents = async (request, response) => {
     var allStudents = await Student.find();
   }
 
-  // var allStudents = await Student.find({ age: { $gt: 2, $lt: 10 } });
-  // // var allStudents = await Student.find({
-  // //   $and: [{ name: "Node", age: { $lt: 4 } }, { email: "vnkdsnk" }],
-  // // });
+  var allStudents = await Student.find({ age: { $gt: 2, $lt: 10 } });
+  var allStudents = await Student.find({
+    $and: [{ name: "Node", age: { $lt: 4 } }, { email: "vnkdsnk" }],
+  });
 
-  // var allStudents = await Student.find({
-  //   name: { $regex: "Node", $options: "i" },
-  // });
+  var allStudents = await Student.find({
+    name: { $regex: "Node", $options: "i" },
+  });
 
   return response.json(allStudents);
 };
