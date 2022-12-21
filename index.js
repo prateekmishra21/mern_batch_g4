@@ -19,6 +19,7 @@ const {
   Login,
 } = require("./src/controllers/index");
 const { authRouter } = require("./src/router/users");
+const { isAuthenticate } = require("./src/controllers/user");
 const app = server();
 
 app.use(cors());
@@ -26,11 +27,11 @@ app.use(bodyParser.json());
 
 app.use("/auth", authRouter);
 
-app.get("/students", getStudents);
-app.post("/create-new-student", createNewStudent);
+app.get("/students", isAuthenticate, getStudents);
+app.post("/create-new-student", isAuthenticate, createNewStudent);
 app.post("/login", Login);
-app.put("/update-student", updateStudent);
-app.delete("/delete-student", deleteStudent);
+app.put("/update-student", isAuthenticate, updateStudent);
+app.delete("/delete-student", isAuthenticate, deleteStudent);
 
 app.listen(4000, () => {
   console.log("Sever Started on port 4000");

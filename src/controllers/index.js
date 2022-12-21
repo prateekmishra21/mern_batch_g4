@@ -1,4 +1,6 @@
 const { Student } = require("../models/models");
+var jwt = require("jsonwebtoken");
+const { SECREAT_KEY } = require("../default");
 
 var students = ["S1", "S2", "S3", "S4", "New Student"];
 const getStudentsOld = (request, response) => {

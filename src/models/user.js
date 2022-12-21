@@ -35,7 +35,7 @@ userSchema.methods = {
   },
   securePassword: function (plainpassword) {
     if (!plainpassword) return "";
-    var ciphertext = CryptoJS.AES.encrypt(plainpassword, this.salt).toString();
+    var ciphertext = CryptoJS.SHA256(plainpassword, this.salt).toString();
     return ciphertext;
   },
 };

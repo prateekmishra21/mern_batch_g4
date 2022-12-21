@@ -1,11 +1,12 @@
 const uuid = require("uuid");
 // console.log(uuid.v4());
 var CryptoJS = require("crypto-js");
+var text = CryptoJS.SHA256("Hello", "12NSJNKJSBKJ").toString();
+// console.log(text);
 
-var bytes = CryptoJS.AES.decrypt(
-  "U2FsdGVkX19jtAWFITV2+7XS6NQPwFsg4eeSMWmj0Ro=",
-  "d88c57e9-c075-434b-bede-b8ce4f692e7f"
-);
-var originalText = bytes.toString(CryptoJS.enc.Utf8);
+var key = uuid.v4();
+var jwt = require("jsonwebtoken");
+var token = jwt.sign({ _id: "8439hiughy89g389y43" }, key);
+console.log(token);
 
-console.log(originalText);
+console.log(jwt.verify(token, key));
