@@ -3,6 +3,7 @@ const cors = require("cors");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const authRouter = require("./src/auth/router");
+const blogRouter = require("./src/blog/router");
 
 const app = express();
 
@@ -16,6 +17,7 @@ app.use(cors());
 app.use(bodyParser.json());
 
 app.use("/auth", authRouter);
+app.use("/blog", blogRouter);
 
 app.listen(4000, () => {
   console.log("SERVER STARTED ON PORT 4000");

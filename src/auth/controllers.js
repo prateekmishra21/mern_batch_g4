@@ -1,5 +1,6 @@
 const { User } = require("./models");
 var jwt = require("jsonwebtoken");
+const Key = "bj3b4kjb3jb3j4b3-43b3b45j3bjk4bj5k3b";
 
 const register = async (req, res) => {
   var isExist = await User.findOne({
@@ -47,7 +48,7 @@ const loginMiddleWare = async (req, res, next) => {
       message: "This password does not match.",
     });
   }
-  var token = jwt.sign({ _id: user._id }, user.salt);
+  var token = jwt.sign({ _id: user._id }, Key);
   req.body.token = token;
   req.body.user = user;
   next();
@@ -64,4 +65,4 @@ const reset = async (req, res) => {
   return res.json({ status: "Done", user });
 };
 
-module.exports = { register, login, loginMiddleWare, reset };
+module.exports = { register, login, loginMiddleWare, reset, Key };
