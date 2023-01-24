@@ -8,7 +8,9 @@ const blogRouter = require("./src/blog/router");
 const app = express();
 
 // Database Connection
-mongoose.connect("mongodb://localhost:27017/blog_g4");
+mongoose.connect(
+  "mongodb+srv://merng16:TeAi1mU5MFpuj7F5@cluster0.yprwra3.mongodb.net/blog_app?retryWrites=true&w=majority"
+);
 mongoose.connection.on("connected", () => {
   console.log("DB CONNECTED WITH BLOG_G4");
 });
